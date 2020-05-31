@@ -10,5 +10,46 @@ repositories {
 }
 
 dependencies {
+    compile 'io.netty:netty-all:4.1.24.Final'
+    compile 'org.apache.geode:geode-core:1.12.0'
     testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+task nettychatserver(type: JavaExec) {
+    main = "NettyChatServer"
+    classpath = sourceSets.main.runtimeClasspath
+}
+task firechatserver(type: JavaExec) {
+    main = "FireChatServer"
+    classpath = sourceSets.main.runtimeClasspath
+    jvmArgs = ["-DlocatorPort=10334", "-Dport=7000"]
+}
+task firechatserver1(type: JavaExec) {
+    main = "FireChatServer"
+    classpath = sourceSets.main.runtimeClasspath
+    jvmArgs = ["-DlocatorPort=10335", "-Dport=7001"]
+}
+task firechatserver2(type: JavaExec) {
+    main = "FireChatServer"
+    classpath = sourceSets.main.runtimeClasspath
+    jvmArgs = ["-DlocatorPort=10336", "-Dport=7002"]
+}
+
+task niochatserver(type: JavaExec) {
+    main = "NioChatServer"
+    classpath = sourceSets.main.runtimeClasspath
+}
+task chatserver(type: JavaExec) {
+    main = "ChatServer"
+    classpath = sourceSets.main.runtimeClasspath
+}
+task chatserver1(type: JavaExec) {
+    main = "ChatServer"
+    classpath = sourceSets.main.runtimeClasspath
+    args = ["1"]
+}
+task chatserver2(type: JavaExec) {
+    main = "ChatServer"
+    classpath = sourceSets.main.runtimeClasspath
+    args = ["2"]
 }

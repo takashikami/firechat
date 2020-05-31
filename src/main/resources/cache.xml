@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://geode.apache.org/schema/cache"
+  xsi:schemaLocation="http://geode.apache.org/schema/cache http://geode.apache.org/schema/cache/cache-1.0.xsd"
+  version="1.0" lock-lease="120" lock-timeout="60" search-timeout="300"
+  is-server="false" copy-on-read="true">
+  <region name="ChatMessage">
+    <region-attributes refid="REPLICATE" statistics-enabled="true">
+      <entry-idle-time>
+        <expiration-attributes timeout="30" action="destroy"/>
+      </entry-idle-time>
+      <cache-listener>
+        <class-name>ChatServer</class-name>
+      </cache-listener>
+    </region-attributes>
+  </region>
+  <region name="FireChatMessage">
+    <region-attributes refid="REPLICATE" statistics-enabled="true">
+      <entry-idle-time>
+        <expiration-attributes timeout="30" action="destroy"/>
+      </entry-idle-time>
+      <cache-listener>
+        <class-name>FireChatServer</class-name>
+      </cache-listener>
+    </region-attributes>
+  </region>
+</cache>
